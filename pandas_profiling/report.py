@@ -196,17 +196,19 @@ def to_html(sample, stats_object):
     overview_html = templates.template('overview').render(values=formatted_values, row_classes = row_classes, messages=messages_html)
 
     # Add plot of matrix correlation
-    pearson_matrix = plot.correlation_matrix(stats_object['correlations']['pearson'], 'Pearson')
-    spearman_matrix = plot.correlation_matrix(stats_object['correlations']['spearman'], 'Spearman')
-    correlations_html = templates.template('correlations').render(
-        values={'pearson_matrix': pearson_matrix, 'spearman_matrix': spearman_matrix})
 
-    # Add sample
+    # pearson_matrix = plot.correlation_matrix(stats_object['correlations']['pearson'], 'Pearson')
+    # spearman_matrix = plot.correlation_matrix(stats_object['correlations']['spearman'], 'Spearman')
+    # correlations_html = templates.template('correlations').render(
+    #     values={'pearson_matrix': pearson_matrix, 'spearman_matrix': spearman_matrix})
+    #
+
+    # # Add sample
     sample_html = templates.template('sample').render(sample_table_html=sample.to_html(classes="sample"))
     # TODO: should be done in the template
     return templates.template('base').render({
         'overview_html': overview_html,
         'rows_html': rows_html,
         'sample_html': sample_html,
-        'correlation_html': correlations_html
+  #      'correlation_html': correlations_html
     })

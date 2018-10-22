@@ -356,9 +356,11 @@ def describe(df, bins=10, check_correlation=True, correlation_threshold=0.9, cor
         ldesc = {col: s for col, s in pool.map(local_multiprocess_func, df.iteritems())}
         pool.close()
 
-    # Get correlations
-    dfcorrPear = df.corr(method="pearson")
-    dfcorrSpear = df.corr(method="spearman")
+    # # Get correlations
+    # dfcorrPear = df.corr(method="pearson")
+    # dfcorrSpear = df.corr(method="spearman")
+    dfcorrPear = None
+    dfcorrSpear = None
 
     # Check correlations between variable
     if check_correlation is True:
